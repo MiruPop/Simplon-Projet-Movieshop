@@ -1,7 +1,9 @@
 package co.simplon.movieshop.service;
 
 import co.simplon.movieshop.model.Client;
+import co.simplon.movieshop.model.Utilisateur;
 import co.simplon.movieshop.repository.ClientRepository;
+import co.simplon.movieshop.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class ClientCrudServiceImpl implements ClientCrudService {
     @Autowired
     ClientRepository clientRepository;
+    @Autowired
+    UtilisateurRepository userRepo;
 
     @Override
     public List<Client> getAllClients() {
@@ -30,7 +34,14 @@ public class ClientCrudServiceImpl implements ClientCrudService {
 
     @Override
     public void addClient(Client client) {
-        clientRepository.save(client);
+        Client nouveauClient = new Client();
+        Utilisateur user = client.getUser();
+        userRepo.save(user);
+        nouveauClient.setAdresse(client.getAdresse());
+        nouveauClient.setTelephone(client.getTelephone());
+        nouveauClient.setUser(user);
+
+        clientRepository.save(nouveauClient);
     }
 
     @Override

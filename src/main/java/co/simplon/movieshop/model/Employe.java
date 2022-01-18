@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Employe {
     @Id
     @Column(name = "matricule")
-    private String matricule;
+    private Long matricule;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_utilisateur", nullable=false)

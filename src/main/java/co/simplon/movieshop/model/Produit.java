@@ -18,7 +18,7 @@ public class Produit {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "image")
+    @Column(name = "image_url")
     private String image;
 
     @Column(name = "prix_unitaire")

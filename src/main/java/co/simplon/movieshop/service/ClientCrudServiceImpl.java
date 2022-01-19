@@ -13,12 +13,9 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-@Component
 public class ClientCrudServiceImpl implements ClientCrudService {
     @Autowired
     ClientRepository clientRepository;
-    @Autowired
-    UtilisateurRepository userRepo;
 
     @Override
     public List<Client> getAllClients() {
@@ -34,14 +31,7 @@ public class ClientCrudServiceImpl implements ClientCrudService {
 
     @Override
     public void addClient(Client client) {
-        Client nouveauClient = new Client();
-        Utilisateur user = client.getUser();
-        userRepo.save(user);
-        nouveauClient.setAdresse(client.getAdresse());
-        nouveauClient.setTelephone(client.getTelephone());
-        nouveauClient.setUser(user);
-
-        clientRepository.save(nouveauClient);
+        clientRepository.save(client);
     }
 
     @Override

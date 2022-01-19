@@ -1,9 +1,11 @@
 package co.simplon.movieshop.service;
 
 import co.simplon.movieshop.model.Produit;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ProduitService {
     List<Produit> getAllProduits();
 
@@ -13,6 +15,8 @@ public interface ProduitService {
 
     void updateProduit(Produit produit);
 
-    void deleteProduit(Produit produit);
+    void achatProduit(Produit produit, int quantiteSouhaite);
+
+//    void deleteProduit(Produit produit);
 
 }

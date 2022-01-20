@@ -1,7 +1,7 @@
 package co.simplon.movieshop.controller;
 
 import co.simplon.movieshop.model.Utilisateur;
-import co.simplon.movieshop.service.UtilisateurCrudService;
+import co.simplon.movieshop.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("secure.movieshop.com/account")
-public class UtilisateurCrudController {
+public class UtilisateurController {
 
     @Autowired
-    private UtilisateurCrudService utilisateurCrudService;
+    private UtilisateurService utilisateurService;
 
  /****************************************************************\
   * A REVOIR les services et routes de l'Utilisateur pour        *
@@ -22,7 +22,7 @@ public class UtilisateurCrudController {
     @PostMapping("/server/gateway/signup")
     public ResponseEntity<String> ajouterUtilisateur(@RequestBody Utilisateur utilisateur) {
         try {
-            utilisateurCrudService.addUser(utilisateur);
+            utilisateurService.addUser(utilisateur);
             return new ResponseEntity<>("Nouvel utilisateur ajouté", HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println("pas ajouté");
@@ -33,13 +33,13 @@ public class UtilisateurCrudController {
 
     @GetMapping("/server/gateway/signin")
     public Utilisateur trouverUtilisateurParEmail(@RequestBody String email) {
-        return utilisateurCrudService.findUserByEmail(email);
+        return utilisateurService.findUserByEmail(email);
     }
 
     @PutMapping("/dashboard/update")
     public ResponseEntity<String> modifierUtilisateur(@RequestBody Utilisateur utilisateur) {
         try {
-            utilisateurCrudService.update(utilisateur);
+            utilisateurService.update(utilisateur);
             return new ResponseEntity<>("Informations utilisateur modifiées", HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("pas modifié");
@@ -50,7 +50,7 @@ public class UtilisateurCrudController {
     @DeleteMapping("/dashboard/delete")
     public ResponseEntity<String> deleteUserAccount(@RequestBody Utilisateur utilisateur) {
         try {
-            utilisateurCrudService.delete(utilisateur);
+            utilisateurService.delete(utilisateur);
             return new ResponseEntity<>("Compte supprimé", HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("pas supprimé");

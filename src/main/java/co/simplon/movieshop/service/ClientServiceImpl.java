@@ -1,11 +1,8 @@
 package co.simplon.movieshop.service;
 
 import co.simplon.movieshop.model.Client;
-import co.simplon.movieshop.model.Utilisateur;
 import co.simplon.movieshop.repository.ClientRepository;
-import co.simplon.movieshop.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-public class ClientCrudServiceImpl implements ClientCrudService {
+public class ClientServiceImpl implements ClientService {
     @Autowired
     ClientRepository clientRepository;
 

@@ -1,6 +1,5 @@
 package co.simplon.movieshop.controller;
 
-import co.simplon.movieshop.model.Client;
 import co.simplon.movieshop.model.Produit;
 import co.simplon.movieshop.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movieshop/admin/stock")
-public class ProduitCrudController {
+public class ProduitController {
     @Autowired
     private ProduitService produitService;
 

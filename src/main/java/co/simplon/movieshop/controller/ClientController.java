@@ -1,7 +1,7 @@
 package co.simplon.movieshop.controller;
 
 import co.simplon.movieshop.model.Client;
-import co.simplon.movieshop.service.ClientCrudService;
+import co.simplon.movieshop.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,26 +11,26 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movieshop/admin/client")
-public class ClientCrudController {
+public class ClientController {
 
     @Autowired
-    private ClientCrudService clientCrudService;
+    private ClientService clientService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Client>> listerClients() {
-        List<Client> liste = clientCrudService.getAllClients();
+        List<Client> liste = clientService.getAllClients();
         return new ResponseEntity<>(liste, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public Client trouverUnClient(@PathVariable("id") String id) {
-        return clientCrudService.selectClientParId(Long.parseLong(id));
+        return clientService.selectClientParId(Long.parseLong(id));
     }
 
     @PostMapping("/add")
     public ResponseEntity<String> ajouterClient(@RequestBody Client client) {
         try {
-            clientCrudService.addClient(client);
+            clientService.addClient(client);
             return new ResponseEntity<>("Nouveau client ajouté", HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println("pas ajouté");
@@ -42,7 +42,7 @@ public class ClientCrudController {
     @PutMapping("/update")
     public ResponseEntity<String> modifierClient(@RequestBody Client client) {
         try {
-            clientCrudService.updateClient(client);
+            clientService.updateClient(client);
             return new ResponseEntity<>("Informations client modifiées", HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("pas modifié");
@@ -54,7 +54,7 @@ public class ClientCrudController {
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteClient(@RequestBody Client client) {
         try {
-            clientCrudService.deleteClient(client);
+            clientService.deleteClient(client);
             return new ResponseEntity<>("Client supprimé", HttpStatus.OK);
         } catch (Exception e) {
             System.out.println("pas supprimé");

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface ClientCrudService {
+public interface ClientService {
     List<Client> getAllClients();
 
     Client selectClientParId(Long id);

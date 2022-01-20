@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @Component
-public class UtilisateurCrudServiceImpl implements UtilisateurCrudService {
+public class UtilisateurServiceImpl implements UtilisateurService {
     @Autowired
     private UtilisateurRepository userRepository;
 

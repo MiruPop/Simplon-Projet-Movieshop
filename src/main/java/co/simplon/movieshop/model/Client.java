@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Client {
     @Id
     @Column(name = "numero_client")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long nrClient;
 
     @Column(name = "adresse_livraison")

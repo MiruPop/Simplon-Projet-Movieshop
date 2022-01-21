@@ -42,13 +42,18 @@ public class ProduitServiceImpl implements ProduitService {
 
     // cette fonctionnalité sera utilisée pour le status "Client"
     // lors du développement des fonctionnalités d'achat
-    @Override
+
+    // créer un Listener sur le DELETE qui va déclencher un trigger côté sql
+    //étudier le @PostUpdate
+        @Override
     public void achatProduit(Produit produit, int quantiteAchetée) {
         int quantiteStock = produit.getQuantiteStock();
         if(quantiteStock >= quantiteAchetée) {
             produit.setQuantiteStock(quantiteStock - quantiteAchetée);
         }
         else {
+            // je peux lui imposer une quantité max: sélection quantité depuis liste
+            // maj avec le stock
             System.out.println("quantité insuffisante");
         }
     }

@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 public class Commande {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "nr_commande")
     private Long nrCommande;
 

@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Data
 public class Employe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "matricule")
     private Long matricule;
 

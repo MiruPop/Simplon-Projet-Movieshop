@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface CommandeRepository  extends JpaRepository<Commande, Long> {
     Optional<Commande> findById(Long id);
     List<Commande> findByClient(Long idClient);
+//    Commande findFirstByCommandeProduits(Long idCommande);
 }

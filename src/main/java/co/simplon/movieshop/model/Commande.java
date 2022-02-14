@@ -3,7 +3,7 @@ package co.simplon.movieshop.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Data
@@ -20,7 +20,7 @@ public class Commande {
     private Double total;
 
     @Column(name = "nr_facture")
-    private String facture;
+    private String nrFacture;
 
     @Column(name = "reference_payement")
     private String refPayement;
@@ -33,4 +33,27 @@ public class Commande {
     @ManyToOne
     @JoinColumn(name = "id_livraison", nullable=false)
     private Livraison livraison;
+
+//    @OneToMany(mappedBy = "cpCommande", cascade = CascadeType.ALL,
+//            orphanRemoval = true)
+//    @JoinColumn(name = "id_commande")
+    @OneToMany(mappedBy = "id.idCommande")
+    private Set<CommandeProduit> commandeProduits;
+
+//    @ElementCollection
+//    @JoinTable(
+//            name="commande_produit",
+//            joinColumns=@JoinColumn(name="id_commande")
+//    )
+//    private List<CommandeProduit> commandeProduits;
+
+//    @ManyToMany(cascade = {
+//            CascadeType.PERSIST,
+//            CascadeType.MERGE
+//    })
+//    @JoinTable(name = "commande_produit",
+//            joinColumns = @JoinColumn(name = "id_commande"),
+//            inverseJoinColumns = @JoinColumn(name = "id_produit")
+//    )
+
 }

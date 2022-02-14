@@ -27,4 +27,17 @@ public class Utilisateur {
     @Enumerated(EnumType.STRING)
     private Profil profil;
 
+    @OneToOne(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Client client;
+    @OneToOne(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Employe employe = new Employe();
+
 }

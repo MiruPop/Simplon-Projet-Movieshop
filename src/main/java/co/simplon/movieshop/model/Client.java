@@ -3,6 +3,8 @@ package co.simplon.movieshop.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,7 +20,14 @@ public class Client {
     @Column(name = "telephone")
     private String telephone;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_utilisateur", referencedColumnName = "id_utilisateur")
     private Utilisateur user;
+
+    @OneToMany(
+            mappedBy = "client",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Commande> commandes = new ArrayList<>();
 }

@@ -3,6 +3,8 @@ package co.simplon.movieshop.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,9 +23,16 @@ public class Livraison {
     *********** https://thorben-janssen.com/hibernate-enum-mappings/ ********************
     */
     @Enumerated(EnumType.STRING)
-    private ModeLivraison type;
+    private ModeLivraisonEnum type;
 
     @Column(name = "prix")
     private Double prix;
+
+    @OneToMany(
+            mappedBy = "livraison",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Commande> commandes = new ArrayList<>();
 
 }

@@ -19,18 +19,18 @@ public class CommandeServiceImpl implements CommandeService {
 
 
     /********************************************\
-      *                   ADMIN                  *
-    \********************************************/
+     *                   ADMIN                  *
+     \********************************************/
 
     @Override
     public List<Commande> listerCommandes() {
         return commandeRepository.findAll();
     }
 
-     @Override
+    @Override
     public Commande selectCommandeParId(Long id) {
         Optional<Commande> optionalCommande = commandeRepository.findById(id);
-        return optionalCommande.orElseThrow(() -> new NoSuchElementException("Pas d'élément avec l'id "+ id));
+        return optionalCommande.orElseThrow(() -> new NoSuchElementException("Pas d'élément avec l'id " + id));
     }
 
     @Override
@@ -46,12 +46,12 @@ public class CommandeServiceImpl implements CommandeService {
 
     /********************************************\
      *                   CLIENT                 *
-    \********************************************/
+     \********************************************/
 
-     @Override
+    @Override
     public void passerCommande(Commande commande, List<Produit> listeProd) {
 
 //         Query query =
-         commandeRepository.save(commande);
+        commandeRepository.save(commande);
     }
 }

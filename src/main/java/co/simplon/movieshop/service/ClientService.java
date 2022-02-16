@@ -11,6 +11,8 @@ public interface ClientService {
 
     Client selectClientParId(Long id);
 
+    Client getClientParCommande(Long idCommande);
+
     void addClient(Client client);
 
     void updateClient(Client client);

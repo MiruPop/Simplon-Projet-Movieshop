@@ -15,7 +15,7 @@ public interface ProduitService {
 
     void updateProduit(Produit produit);
 
-    void achatProduit(Produit produit, int quantiteSouhaite);
+    void selectProduitQuantite(Produit produit, int quantiteSouhaite);
 
 //    void deleteProduit(Produit produit);
 

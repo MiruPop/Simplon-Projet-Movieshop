@@ -31,26 +31,6 @@ public class Produit {
     @Column(name = "quantite_stock")
     private int quantiteStock;
 
-    //    @OneToMany(mappedBy = "cpProduit", cascade = CascadeType.ALL,
-//            orphanRemoval = true)
-//    @JoinColumn(name = "id_produit")
-//    private Set<Commande> commandeProduits = new HashSet<>();
-//    @ElementCollection
-//    @JoinTable(
-//            name = "commande_produit",
-//            joinColumns = @JoinColumn(name = "idProduit")
-//    )
-//    private List<CommandeProduit> commandeProduits;
-//    @ManyToMany(mappedBy = "produits")
-//    @ManyToMany(cascade = {
-//            CascadeType.PERSIST,
-//            CascadeType.MERGE
-//    })
-//    @JoinTable(name = "commande_produit",
-//            joinColumns = @JoinColumn(name = "id_produit"),
-//            inverseJoinColumns = @JoinColumn(name = "id_commande")
-//    )
-//    private Set<Commande> commandes = new HashSet<>();
     @OneToMany(mappedBy = "id.idProduit")
     private Set<CommandeProduit> commandeProduits;
 

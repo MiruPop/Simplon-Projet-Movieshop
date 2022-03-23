@@ -5,6 +5,7 @@ import co.simplon.movieshop.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -46,16 +47,22 @@ public class ProduitServiceImpl implements ProduitService {
     // créer un Listener sur le DELETE qui va déclencher un trigger côté sql
     //étudier le @PostUpdate
         @Override
-    public void achatProduit(Produit produit, int quantiteAchetée) {
+    public void selectProduitQuantite(Produit produit, int quantiteSouhaitee) {
         int quantiteStock = produit.getQuantiteStock();
-        if(quantiteStock >= quantiteAchetée) {
-            produit.setQuantiteStock(quantiteStock - quantiteAchetée);
+        if(quantiteStock >= quantiteSouhaitee) {
+            produit.setQuantiteStock(quantiteStock - quantiteSouhaitee);
         }
         else {
             // je peux lui imposer une quantité max: sélection quantité depuis liste
             // maj avec le stock
             System.out.println("quantité insuffisante");
         }
+    }
+
+    public List<Produit> selectionnerProduits(Produit produit, int quantite) {
+        List<Produit> produitList = new ArrayList<>();
+
+        return null;
     }
 
     // cette fonctionnalité n'est pas accesible pour le statut "ADMIN"

@@ -1,17 +1,20 @@
 package co.simplon.movieshop.service;
 
+import co.simplon.movieshop.model.Client;
 import co.simplon.movieshop.model.Commande;
 import co.simplon.movieshop.model.Produit;
+import co.simplon.movieshop.repository.CommandeProduitRepository;
 import co.simplon.movieshop.repository.CommandeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.Query;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class CommandeServiceImpl implements CommandeService {
 
     @Autowired
@@ -20,7 +23,7 @@ public class CommandeServiceImpl implements CommandeService {
 
     /********************************************\
      *                   ADMIN                  *
-     \********************************************/
+    \********************************************/
 
     @Override
     public List<Commande> listerCommandes() {
@@ -29,13 +32,13 @@ public class CommandeServiceImpl implements CommandeService {
 
     @Override
     public Commande selectCommandeParId(Long id) {
-        Optional<Commande> optionalCommande = commandeRepository.findById(id);
+        Optional<Commande> optionalCommande = commandeRepository.findByNrCommande(id);
         return optionalCommande.orElseThrow(() -> new NoSuchElementException("Pas d'élément avec l'id " + id));
     }
 
     @Override
-    public List<Commande> commandesParClient(Long idClient) {
-        return commandeRepository.findByClient(idClient);
+    public List<Commande> commandesParClient(Client client) {
+        return commandeRepository.findByClient(client);
     }
 
 
@@ -50,8 +53,6 @@ public class CommandeServiceImpl implements CommandeService {
 
     @Override
     public void passerCommande(Commande commande, List<Produit> listeProd) {
-
-//         Query query =
         commandeRepository.save(commande);
     }
 }

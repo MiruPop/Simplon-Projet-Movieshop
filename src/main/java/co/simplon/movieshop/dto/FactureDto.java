@@ -17,9 +17,6 @@ public class FactureDto {
     private String adresse;
     private String telephone;
     private Set<HashMap<String,String>> produitsFactures;
-//    private String libelleProduit;
-//    private Double prixUnitaire;
-//    private int quantite;
     private String modeLivraison;
     private Double montantTotal;
     private String refPayement;

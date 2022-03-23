@@ -27,33 +27,14 @@ public class Commande {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_client", nullable=false)
+    @JoinColumn(name = "id_client", nullable = false)
     private Client client;
 
     @ManyToOne
-    @JoinColumn(name = "id_livraison", nullable=false)
+    @JoinColumn(name = "id_livraison", nullable = false)
     private Livraison livraison;
 
-//    @OneToMany(mappedBy = "cpCommande", cascade = CascadeType.ALL,
-//            orphanRemoval = true)
-//    @JoinColumn(name = "id_commande")
     @OneToMany(mappedBy = "id.idCommande")
     private Set<CommandeProduit> commandeProduits;
-
-//    @ElementCollection
-//    @JoinTable(
-//            name="commande_produit",
-//            joinColumns=@JoinColumn(name="id_commande")
-//    )
-//    private List<CommandeProduit> commandeProduits;
-
-//    @ManyToMany(cascade = {
-//            CascadeType.PERSIST,
-//            CascadeType.MERGE
-//    })
-//    @JoinTable(name = "commande_produit",
-//            joinColumns = @JoinColumn(name = "id_commande"),
-//            inverseJoinColumns = @JoinColumn(name = "id_produit")
-//    )
 
 }

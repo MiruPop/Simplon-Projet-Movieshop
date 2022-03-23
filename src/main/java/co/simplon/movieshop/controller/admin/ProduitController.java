@@ -1,4 +1,4 @@
-package co.simplon.movieshop.controller;
+package co.simplon.movieshop.controller.admin;
 
 import co.simplon.movieshop.model.Produit;
 import co.simplon.movieshop.service.ProduitService;

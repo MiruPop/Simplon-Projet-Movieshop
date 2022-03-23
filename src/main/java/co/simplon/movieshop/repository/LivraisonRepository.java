@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LivraisonRepository extends JpaRepository<Livraison,Integer> {
-    Livraison findByCommandes(Long idCommande);
+//    Livraison findByType(Long idCommande);
 }

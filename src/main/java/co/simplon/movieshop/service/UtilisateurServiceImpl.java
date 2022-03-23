@@ -1,5 +1,6 @@
 package co.simplon.movieshop.service;
 
+import co.simplon.movieshop.model.Client;
 import co.simplon.movieshop.model.Utilisateur;
 import co.simplon.movieshop.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public void delete(Utilisateur utilisateur) {
         userRepository.delete(utilisateur);
+    }
+
+    @Override
+    public Utilisateur getUserByClient(Client client) {
+        return userRepository.findByClient(client);
     }
 }

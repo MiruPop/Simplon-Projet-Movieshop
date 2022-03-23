@@ -13,14 +13,6 @@ public class CommandeProduit {
             @AttributeOverride(name = "idProduit", column = @Column(name = "id_produit")) })
     private CommandeProduitKey id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_commande", insertable=false, updatable=false)
-//    private Commande cpCommande;
-//
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id_produit", insertable=false, updatable=false)
-//    private Produit cpProduit;
-
     @Column(name = "quantite_produit")
     private int qtProduit;
 }
